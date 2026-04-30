@@ -2,9 +2,9 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <!-- 手机适配核心：必须加 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>为舒舒 - 轻养食疗 · 舒适生活</title>
+    <!-- 仅给LOGO使用：阿里健康体2.0 Bold -->
     <style>
         @font-face {
             font-family: 'AliHealth';
@@ -16,25 +16,25 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif; /* 恢复原来字体 */
             scroll-behavior: smooth;
         }
 
+        /* 极简高级配色：健康食疗 */
         :root {
             --primary: #8EB897;
             --light: #F8F9F7;
             --dark: #2A2A2A;
             --gray: #777777;
-            --light-gray: #999999;
+            --light-gray: #999999; /* 新增：产品介绍浅灰色 */
         }
 
         body {
             background: var(--light);
             color: var(--dark);
-            /* 禁止横向滚动 */
-            overflow-x: hidden;
         }
 
+        /* 导航 */
         header {
             width: 100%;
             background: rgba(255,255,255,0.95);
@@ -49,6 +49,7 @@
             box-shadow: 0 2px 20px rgba(0,0,0,0.05);
         }
 
+        /* 只有LOGO用阿里健康体 */
         .logo {
             font-family: 'AliHealth', sans-serif !important;
             font-size: 24px;
@@ -70,21 +71,7 @@
             color: var(--primary);
         }
 
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 4px;
-            cursor: pointer;
-            z-index: 1000;
-        }
-
-        .hamburger span {
-            width: 26px;
-            height: 2px;
-            background: var(--dark);
-            transition: 0.3s;
-        }
-
+        /* 首屏 */
         .hero {
             width: 100%;
             height: 100vh;
@@ -127,6 +114,7 @@
             transform: translateY(-3px);
         }
 
+        /* 区块 */
         .section {
             padding: 100px 5%;
             text-align: center;
@@ -153,6 +141,7 @@
             font-size: 15px;
         }
 
+        /* 产品 */
         .products {
             display: flex;
             flex-wrap: wrap;
@@ -173,10 +162,11 @@
             transform: translateY(-8px);
         }
 
+        /* 产品图片适配：居中裁剪，保证美观 */
         .product-img {
             width: 100%;
             height: 240px;
-            object-fit: cover;
+            object-fit: cover; /* 图片自适应，不拉伸变形 */
         }
 
         .product-info {
@@ -187,16 +177,17 @@
         .product-name {
             font-size: 16px;
             margin-bottom: 8px;
-            font-weight: bold;
+            font-weight: bold; /* 产品名加粗更醒目 */
         }
 
         .product-price {
             color: var(--primary);
             font-size: 18px;
             font-weight: bold;
-            margin-bottom: 12px;
+            margin-bottom: 12px; /* 价格和介绍间距 */
         }
 
+        /* 产品介绍样式优化 */
         .product-desc {
             font-size: 13px;
             color: var(--light-gray);
@@ -204,10 +195,12 @@
             margin-top: 8px;
         }
 
+        /* 品牌文化 */
         .about {
             background: white;
         }
 
+        /* 联系 */
         .contact-wrap {
             display: flex;
             flex-wrap: wrap;
@@ -228,6 +221,7 @@
             font-size: 14px;
         }
 
+        /* 底部 */
         footer {
             background: var(--dark);
             color: rgba(255,255,255,0.7);
@@ -236,65 +230,21 @@
             font-size: 14px;
         }
 
-        /* ====================================== */
-        /* 👇 这里是手机适配核心代码，已为你加上 */
-        /* ====================================== */
+        /* 移动端 */
         @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-            nav {
-                position: fixed;
-                top: 0;
-                right: 0;
-                width: 100%;
-                height: 100vh;
-                background: white;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 30px;
-                transform: translateX(100%);
-                transition: 0.3s;
-                box-shadow: -2px 0 20px rgba(0,0,0,0.1);
-            }
-            nav.active {
-                transform: translateX(0);
-            }
-            nav a {
-                font-size: 18px;
-                margin: 0;
-            }
-            .hero-content h1 {
-                font-size: 32px;
-            }
-            .hero {
-                height: auto;
-                padding: 100px 20px;
-            }
-            .section {
-                padding: 60px 20px;
-            }
-            .product-card {
-                width: 100%;
-            }
-            .contact-wrap {
-                flex-direction: column;
-                gap: 30px;
-            }
+            nav { display: none; }
+            .hero-content h1 { font-size: 34px; }
+            .hero { height: auto; padding: 80px 20px; }
+            .product-card { width: 90%; } /* 移动端产品卡片全屏宽 */
         }
     </style>
 </head>
 <body>
 
+<!-- 导航 -->
 <header>
     <a href="#" class="logo">为舒舒</a>
-    <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    <nav id="mobileNav">
+    <nav>
         <a href="#home">首页</a>
         <a href="#products">产品系列</a>
         <a href="#about">品牌文化</a>
@@ -302,6 +252,7 @@
     </nav>
 </header>
 
+<!-- 首屏 -->
 <section class="hero" id="home">
     <div class="hero-content">
         <h1>为舒舒 · 轻养食疗</h1>
@@ -310,11 +261,13 @@
     </div>
 </section>
 
+<!-- 产品（嵌入实拍图+新增详细介绍） -->
 <section class="section" id="products">
     <h2 class="section-title">产品系列</h2>
     <div class="section-line"></div>
     <p class="section-desc">精选天然原料，坚持科学配比，为日常饮食带来轻养、便捷、健康的新选择。</p>
     <div class="products">
+        <!-- 陈皮丁香固体饮料 -->
         <div class="product-card">
             <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/615a3c8b75cc435cac55f8d137b7fe0d.JPG~tplv-a9rns2rl98-24:720:720.jpg?lk3s=8e244e95&rcl=20260427115723B152F03DE28ED2E83468&rrcfp=8a172a1a&x-expires=1777867043&x-signature=Ofa2%2BMb2gLS7fplR%2FhHds%2F3Cimg%3D" 
                  alt="陈皮丁香固体饮料" class="product-img">
@@ -326,8 +279,9 @@
                 </div>
             </div>
         </div>
+        <!-- 甘草杏仁固体饮料 -->
         <div class="product-card">
-            <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/c7fd2c086f8f41058ed5cd0e930885b.JPG~tplv-a9rns2rl98-24:720:720.jpg?lk3s=8e244e95&rcl=20260427115723B152F03DE28ED2E83468&rrcfp=8a172a1a&x-expires=1777867043&x-signature=QFCD6tJfZ9FnvyvuT8CG2u4lRqk%3D" 
+            <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/c7fd2c086f8f41058ed5cd0e930885b3.JPG~tplv-a9rns2rl98-24:720:720.jpg?lk3s=8e244e95&rcl=20260427115723B152F03DE28ED2E83468&rrcfp=8a172a1a&x-expires=1777867043&x-signature=QFCD6tJfZ9FnvyvuT8CG2u4lRqk%3D" 
                  alt="甘草杏仁固体饮料" class="product-img">
             <div class="product-info">
                 <div class="product-name">甘草杏仁固体饮料</div>
@@ -340,6 +294,7 @@
     </div>
 </section>
 
+<!-- 品牌文化 -->
 <section class="section about" id="about">
     <h2 class="section-title">品牌文化</h2>
     <div class="section-line"></div>
@@ -351,6 +306,7 @@
     </p>
 </section>
 
+<!-- 联系我们（已修改指定信息） -->
 <section class="section" id="contact">
     <h2 class="section-title">联系我们</h2>
     <div class="section-line"></div>
@@ -371,39 +327,10 @@
     </div>
 </section>
 
+<!-- 底部 -->
 <footer>
     © 2025 为舒舒 健康食疗品牌｜保留所有权利
 </footer>
-
-<script>
-    const hamburger = document.getElementById('hamburger');
-    const mobileNav = document.getElementById('mobileNav');
-    
-    hamburger.addEventListener('click', () => {
-        mobileNav.classList.toggle('active');
-        const spans = hamburger.querySelectorAll('span');
-        if (mobileNav.classList.contains('active')) {
-            spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-            spans[1].style.opacity = '0';
-            spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
-        } else {
-            spans[0].style.transform = 'none';
-            spans[1].style.opacity = '1';
-            spans[2].style.transform = 'none';
-        }
-    });
-
-    const navLinks = mobileNav.querySelectorAll('a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileNav.classList.remove('active');
-            const spans = hamburger.querySelectorAll('span');
-            spans[0].style.transform = 'none';
-            spans[1].style.opacity = '1';
-            spans[2].style.transform = 'none';
-        });
-    });
-</script>
 
 </body>
 </html>
