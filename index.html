@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>为舒舒 - 轻养食疗 · 舒适生活</title>
+    <!-- 仅给LOGO使用：阿里健康体2.0 Bold -->
+    <style>
+        @font-face {
+            font-family: 'AliHealth';
+            src: url('https://p.aiwenku.com/fonts/AlibabaHealthFont2.0-Bold.ttf') format('truetype');
+            font-weight: bold;
+            font-display: swap;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif; /* 恢复原来字体 */
+            scroll-behavior: smooth;
+        }
+
+        /* 极简高级配色：健康食疗 */
+        :root {
+            --primary: #8EB897;
+            --light: #F8F9F7;
+            --dark: #2A2A2A;
+            --gray: #777777;
+            --light-gray: #999999; /* 新增：产品介绍浅灰色 */
+        }
+
+        body {
+            background: var(--light);
+            color: var(--dark);
+        }
+
+        /* 导航 */
+        header {
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            z-index: 999;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        /* 只有LOGO用阿里健康体 */
+        .logo {
+            font-family: 'AliHealth', sans-serif !important;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            margin: 0 22px;
+            text-decoration: none;
+            color: var(--dark);
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* 首屏 */
+        .hero {
+            width: 100%;
+            height: 100vh;
+            max-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+            margin-top: 70px;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .hero-content .slogan {
+            font-size: 18px;
+            color: var(--gray);
+            margin-bottom: 40px;
+            letter-spacing: 0.8px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 42px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+            border: none;
+        }
+
+        .btn:hover {
+            background: #7aa885;
+            transform: translateY(-3px);
+        }
+
+        /* 区块 */
+        .section {
+            padding: 100px 5%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .section-line {
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+            margin: 0 auto 40px;
+        }
+
+        .section-desc {
+            color: var(--gray);
+            max-width: 650px;
+            margin: 0 auto 60px;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        /* 产品 */
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .product-card {
+            width: 290px;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+            transition: 0.35s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+        }
+
+        /* 产品图片适配：居中裁剪，保证美观 */
+        .product-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover; /* 图片自适应，不拉伸变形 */
+        }
+
+        .product-info {
+            padding: 24px;
+            text-align: left;
+        }
+
+        .product-name {
+            font-size: 16px;
+            margin-bottom: 8px;
+            font-weight: bold; /* 产品名加粗更醒目 */
+        }
+
+        .product-price {
+            color: var(--primary);
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 12px; /* 价格和介绍间距 */
+        }
+
+        /* 产品介绍样式优化 */
+        .product-desc {
+            font-size: 13px;
+            color: var(--light-gray);
+            line-height: 1.6;
+            margin-top: 8px;
+        }
+
+        /* 品牌文化 */
+        .about {
+            background: white;
+        }
+
+        /* 联系 */
+        .contact-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 20px;
+        }
+
+        .contact-item h4 {
+            color: var(--primary);
+            font-size: 16px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .contact-item p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        /* 底部 */
+        footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 40px 5%;
+            font-size: 14px;
+        }
+
+        /* 移动端 */
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .hero-content h1 { font-size: 34px; }
+            .hero { height: auto; padding: 80px 20px; }
+            .product-card { width: 90%; } /* 移动端产品卡片全屏宽 */
+        }
+    </style>
+</head>
+<body>
+
+<!-- 导航 -->
+<header>
+    <a href="#" class="logo">为舒舒</a>
+    <nav>
+        <a href="#home">首页</a>
+        <a href="#products">产品系列</a>
+        <a href="#about">品牌文化</a>
+        <a href="#contact">联系我们</a>
+    </nav>
+</header>
+
+<!-- 首屏 -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>为舒舒 · 轻养食疗</h1>
+        <p class="slogan">药食同源 · 独家秘方</p>
+        <a href="#products" class="btn">探索产品</a>
+    </div>
+</section>
+
+<!-- 产品（嵌入实拍图+新增详细介绍） -->
+<section class="section" id="products">
+    <h2 class="section-title">产品系列</h2>
+    <div class="section-line"></div>
+    <p class="section-desc">精选天然原料，坚持科学配比，为日常饮食带来轻养、便捷、健康的新选择。</p>
+    <div class="products">
+        <!-- 陈皮丁香固体饮料 -->
+        <div class="product-card">
+            <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/615a3c8b75cc435cac55f8d137b7fe0d.JPG~tplv-a9rns2rl98-24:720:720.jpg?lk3s=8e244e95&rcl=20260427115723B152F03DE28ED2E83468&rrcfp=8a172a1a&x-expires=1777867043&x-signature=Ofa2%2BMb2gLS7fplR%2FhHds%2F3Cimg%3D" 
+                 alt="陈皮丁香固体饮料" class="product-img">
+            <div class="product-info">
+                <div class="product-name">陈皮丁香固体饮料</div>
+                <div class="product-price">¥ 39.9 / 盒</div>
+                <div class="product-desc">
+                    以“陈皮、丁香、蒲公英、茯苓、鸡内金、牡蛎、砂仁、干姜、甘草、肉桂”10种中药成分为核心原料，搭配品牌独家配比的药食同源草本组方，主打脾胃日常调理，适合饮食不规律、脾胃敏感人群日常饮用，温水冲泡即饮，温和滋养，助力脾胃舒适。
+                </div>
+            </div>
+        </div>
+        <!-- 甘草杏仁固体饮料 -->
+        <div class="product-card">
+            <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/c7fd2c086f8f41058ed5cd0e930885b3.JPG~tplv-a9rns2rl98-24:720:720.jpg?lk3s=8e244e95&rcl=20260427115723B152F03DE28ED2E83468&rrcfp=8a172a1a&x-expires=1777867043&x-signature=QFCD6tJfZ9FnvyvuT8CG2u4lRqk%3D" 
+                 alt="甘草杏仁固体饮料" class="product-img">
+            <div class="product-info">
+                <div class="product-name">甘草杏仁固体饮料</div>
+                <div class="product-price">¥ 39.9 / 盒</div>
+                <div class="product-desc">
+                    以“甘草、杏仁、桔梗、芦根、鱼腥草、桑叶、桃仁、蒲公英、陈皮、茯苓、干姜、肉桂、鸡内金”13种中药成分为核心原料，结合品牌独家中药配比组方，主打呼吸道日常养护，适合气候多变、环境干燥等场景下的日常饮用，口感温润，便捷易吸收。
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 品牌文化 -->
+<section class="section about" id="about">
+    <h2 class="section-title">品牌文化</h2>
+    <div class="section-line"></div>
+    <p class="section-desc" style="text-align: left; max-width: 800px;">
+        品牌使命：传承千年药食同源智慧，融合现代科学，为国人提供安全、便捷、有效的健康膳食解决方案，守护全民日常健康。<br><br>
+        品牌理念：以易经为基、药食为源、科学为核、匠心为质，坚守传统养生精髓，创新现代健康表达。<br><br>
+        核心价值观：天然为本、科学为证、品质至上、用户为先，每一款产品均源于独家配比、道地选材与严苛工艺，致力于成为消费者信赖的健康膳食品牌。<br><br>
+        品牌愿景：打造药食同源健康膳食标杆，让传统养生智慧融入现代生活，助力全民实现舒适、健康的生活方式。
+    </p>
+</section>
+
+<!-- 联系我们（已修改指定信息） -->
+<section class="section" id="contact">
+    <h2 class="section-title">联系我们</h2>
+    <div class="section-line"></div>
+    <p class="section-desc">欢迎代理合作、产品咨询与定制服务</p>
+    <div class="contact-wrap">
+        <div class="contact-item">
+            <h4>客服咨询</h4>
+            <p>19706896986</p>
+        </div>
+        <div class="contact-item">
+            <h4>商务合作</h4>
+            <p>shunhening@163.com</p>
+        </div>
+        <div class="contact-item">
+            <h4>品牌地址</h4>
+            <p>浙江省杭州市上城区科卫路687号180室</p>
+        </div>
+    </div>
+</section>
+
+<!-- 底部 -->
+<footer>
+    © 2025 为舒舒 健康食疗品牌｜保留所有权利
+</footer>
+
+</body>
+</html>
